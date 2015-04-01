@@ -283,7 +283,7 @@ var GameScene = cc.Scene.extend({
 		this.addChild(this.hubLayer = new HubLayer(this), 1);
 		
 		//particle
-		var particle = cc.ParticleSystem(res.particle.circle);
+		var particle = new cc.ParticleSystem(res.particle.circle);
 		particle.setPosition(800, 100);
 		this.addChild(particle,100);
 		//add background music

@@ -1,89 +1,89 @@
 var NetworkHubLayer = cc.Layer.extend({
 
-	labelCoin: null,
-	pLayer: null,
-	playLayer: null,
-	statistics: null,
-	indicators: [],
-	
-	ctor: function (playLayer, player, statistics, settings, camera) {
-		this._super();
-		this.playLayer = playLayer;
-		this.player = player;
-		this.statistics = statistics;
-		this.camera = camera;
-		
-		var winSize = cc.director.getWinSize();
-		
-		var goldbar = new cc.Sprite(res.ui.goldbar);
-		goldbar.attr({
-			x: 120,
-			y: winSize.height - 40
-		});
-		this.addChild(goldbar);
-		
-		this.energybar = new cc.Sprite(res.ui.energybar);
-		this.energybar.attr({
-			x: 350,
-			y: winSize.height - 40
-		});
-		this.addChild(this.energybar);
-		
-		this.progress = new cc.Sprite(res.ui.progress);
-		this.progress.attr({
-			x: 303.5,
-			y: winSize.height - 41,
-			anchorX:0,
-		});
-		this.progress.setScaleX(0.00001);
-		this.progress.setScaleY(0.9);
-		this.addChild(this.progress);
-		
-		this.labelCoin = new cc.LabelTTF(statistics.score, "Helvetica", 50);
-		this.labelCoin.setColor(cc.color(255, 255, 255));// white color
-		this.labelCoin.setPosition(cc.p(130, winSize.height - 43));
-		this.labelCoin.setScale(0.4);
-		this.addChild(this.labelCoin);
-		
-		// running distance
-		this.distance = new cc.Sprite(res.ui.distance);
-		this.distance.attr({
-			x: 490,
-			y: winSize.height - 40,
-			anchorX: 0
-		});
-		this.addChild(this.distance);
-		
-		this.labelrun = new cc.LabelTTF("0m", "Helvetica", 50);
-		this.labelrun.setColor(cc.color(255, 255, 255));// white color
-		this.labelrun.setPosition(cc.p(605, winSize.height - 43));
-		this.labelrun.setScale(0.4);
-		this.addChild(this.labelrun);
-		
-		// sound control btn
-		var soundOn = new cc.MenuItemImage(res.ui.soundOn);
-		var soundOff = new cc.MenuItemImage(res.ui.soundOff);
-		var toggler = new cc.MenuItemToggle( soundOn, soundOff,
-				function(){
-						if(settings.audioEnabled){
-							settings.audioEnabled = false;
-						} else {
-							settings.audioEnabled = true;
-						}
-				},this);
-		
-		var soundBtn = new cc.Menu(toggler);
-		
-		soundBtn.setPosition(cc.p(winSize.width-50, winSize.height - 45));
-		this.addChild(soundBtn);
-		
-		///
-		this.indicator = new cc.Sprite(res.menu.enable);
-		this.indicator.setPosition(cc.p(50, 50));
-		this.indicator.setScale(0.6);
-		this.addChild(this.indicator, 100);
+    labelCoin: null,
+    pLayer: null,
+    playLayer: null,
+    statistics: null,
+    indicators: [],
 
-		// prop set
+    ctor: function (playLayer, player, statistics, settings, camera) {
+        this._super();
+        this.playLayer = playLayer;
+        this.player = player;
+        this.statistics = statistics;
+        this.camera = camera;
+
+        var winSize = cc.director.getWinSize();
+
+        var goldbar = new cc.Sprite(res.ui.goldbar);
+        goldbar.attr({
+            x: 120,
+            y: winSize.height - 40
+        });
+        this.addChild(goldbar);
+
+        this.energybar = new cc.Sprite(res.ui.energybar);
+        this.energybar.attr({
+            x: 350,
+            y: winSize.height - 40
+        });
+        this.addChild(this.energybar);
+
+        this.progress = new cc.Sprite(res.ui.progress);
+        this.progress.attr({
+            x: 303.5,
+            y: winSize.height - 41,
+            anchorX: 0,
+        });
+        this.progress.setScaleX(0.00001);
+        this.progress.setScaleY(0.9);
+        this.addChild(this.progress);
+
+        this.labelCoin = new cc.LabelTTF(statistics.score, "Helvetica", 50);
+        this.labelCoin.setColor(cc.color(255, 255, 255));// white color
+        this.labelCoin.setPosition(cc.p(130, winSize.height - 43));
+        this.labelCoin.setScale(0.4);
+        this.addChild(this.labelCoin);
+
+        // running distance
+        this.distance = new cc.Sprite(res.ui.distance);
+        this.distance.attr({
+            x: 490,
+            y: winSize.height - 40,
+            anchorX: 0
+        });
+        this.addChild(this.distance);
+
+        this.labelrun = new cc.LabelTTF("0m", "Helvetica", 50);
+        this.labelrun.setColor(cc.color(255, 255, 255));// white color
+        this.labelrun.setPosition(cc.p(605, winSize.height - 43));
+        this.labelrun.setScale(0.4);
+        this.addChild(this.labelrun);
+
+        // sound control btn
+        var soundOn = new cc.MenuItemImage(res.ui.soundOn);
+        var soundOff = new cc.MenuItemImage(res.ui.soundOff);
+        var toggler = new cc.MenuItemToggle(soundOn, soundOff,
+            function () {
+                if (settings.audioEnabled) {
+                    settings.audioEnabled = false;
+                } else {
+                    settings.audioEnabled = true;
+                }
+            }, this);
+
+        var soundBtn = new cc.Menu(toggler);
+
+        soundBtn.setPosition(cc.p(winSize.width - 50, winSize.height - 45));
+        this.addChild(soundBtn);
+
+        ///
+        this.indicator = new cc.Sprite(res.menu.enable);
+        this.indicator.setPosition(cc.p(50, 50));
+        this.indicator.setScale(0.6);
+        this.addChild(this.indicator, 100);
+
+        // prop set
 //		this.magnetProp = new cc.Menu(new cc.MenuItemSprite(
 //				new cc.Sprite(res.ui.magnetProp),
 //				new cc.Sprite(res.ui.magnetProp),
@@ -188,69 +188,69 @@ var NetworkHubLayer = cc.Layer.extend({
 //		this.RedshoesNum.setColor(cc.color(168, 117, 56));// white color
 //		this.RedshoesNum.setPosition(cc.p(winSize.width-68, winSize.height/2+28));
 //		this.addChild(this.RedshoesNum, 10);
-		///
-		this.indicator = new cc.Sprite(res.menu.enable);
-		this.indicator.setPosition(cc.p(50, 50));
-		this.indicator.setScale(0.6);
-		this.addChild(this.indicator, 100);
-		
-		this.scheduleUpdate();
-	},
+        ///
+        this.indicator = new cc.Sprite(res.menu.enable);
+        this.indicator.setPosition(cc.p(50, 50));
+        this.indicator.setScale(0.6);
+        this.addChild(this.indicator, 100);
 
-	update: function (dt) {
-		var statistics = this.statistics;
-		var indicators = this.indicators;
-		var hero = this.player;
-		
-		// update the coins and meters.
-		this.labelCoin.setString(statistics.coins);
-		this.labelrun.setString(statistics.meter + " m");
-		
-		// update the indicators.
-		for (var i=0; i<indicators.length; i++) {
-			if (ind.update) {
-				ind.update(dt, hero);
-			}
-		}
-		
-		if (this.playLayer.touchable) {
-			this.indicator.setTexture(res.menu.enable);
-		} else {
-			this.indicator.setTexture(res.menu.disable);
-		}
-	},
-	
-	addIndicator: function(ind) {
-		this.addChild(ind.sprite);
-		
-		var indicators = this.indicators;
-		var statistics = this.statistics;
-		var camera = this.camera;
-		var winSize = cc.director.getWinSize();
-		
-		var px = camera.x + winSize.width / 2;
-		var py = indicators.length * 100;
-		var action = (new cc.MoveTo(0.5, cc.p(px+200,py+300))).easing(cc.easeBackIn());
-		ind.sprite.runAction(action);
-		indicators.push(ind);
-	},
-	
-	removeIndicator: function(ind) {
-		var indicators = this.indicators;
-		for (var i=0; i<indicators.length; i++) {
-			if (indicators[i] == ind) {
-				indicators.splice(i, 1).sprite.removeFromParent();
-				break;
-			}
-		}
-	},
-	
-	consumeMagnet: function() {
-		this.progress.setScaleX(0.01);
-		var actionTo1 = cc.ScaleTo.create(1, 1.03, 1);
-		var actionTo = cc.ScaleTo.create(7.5, 0.5, 0.7);
-		var actionTo2 = cc.ScaleTo.create(7.5, 0.0001, 1);
-		var seq = cc.Sequence.create(actionTo1, actionTo, actionTo2);
-		this.progress.runAction(seq);
-	}
+        this.scheduleUpdate();
+    },
+
+    update: function (dt) {
+        var statistics = this.statistics;
+        var indicators = this.indicators;
+        var hero = this.player;
+
+        // update the coins and meters.
+        this.labelCoin.setString(statistics.coins);
+        this.labelrun.setString(statistics.meter + " m");
+
+        // update the indicators.
+        for (var i = 0; i < indicators.length; i++) {
+            if (ind.update) {
+                ind.update(dt, hero);
+            }
+        }
+
+        if (this.playLayer.touchable) {
+            this.indicator.setTexture(res.menu.enable);
+        } else {
+            this.indicator.setTexture(res.menu.disable);
+        }
+    },
+
+    addIndicator: function (ind) {
+        this.addChild(ind.sprite);
+
+        var indicators = this.indicators;
+        var statistics = this.statistics;
+        var camera = this.camera;
+        var winSize = cc.director.getWinSize();
+
+        var px = camera.x + winSize.width / 2;
+        var py = indicators.length * 100;
+        var action = (new cc.MoveTo(0.5, cc.p(px + 200, py + 300))).easing(cc.easeBackIn());
+        ind.sprite.runAction(action);
+        indicators.push(ind);
+    },
+
+    removeIndicator: function (ind) {
+        var indicators = this.indicators;
+        for (var i = 0; i < indicators.length; i++) {
+            if (indicators[i] == ind) {
+                indicators.splice(i, 1).sprite.removeFromParent();
+                break;
+            }
+        }
+    },
+
+    consumeMagnet: function () {
+        this.progress.setScaleX(0.01);
+        var actionTo1 = cc.scaleTo(1, 1.03, 1);
+        var actionTo = cc.scaleTo(7.5, 0.5, 0.7);
+        var actionTo2 = cc.scaleTo(7.5, 0.0001, 1);
+        var seq = cc.sequence(actionTo1, actionTo, actionTo2);
+        this.progress.runAction(seq);
+    }
 });

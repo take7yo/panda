@@ -36,27 +36,27 @@ var StatisticsLayer = cc.LayerColor.extend(/**@lends StatisticsLayer# */{
 		});
 		this.board.setScale(0.7);
 		this.addChild(this.board,0);
-		var actionTo = cc.MoveTo.create(0.7, cc.p(winSize.width/2, winSize.height/2)).easing(cc.easeBounceOut());
-//		var actionTo1 = cc.MoveTo.create(0.7, cc.p(winSize.width/2-120, winSize.height/2-200)).easing(cc.easeBounceOut());
+		var actionTo = cc.moveTo(0.7, cc.p(winSize.width/2, winSize.height/2)).easing(cc.easeBounceOut());
+//		var actionTo1 = cc.moveTo(0.7, cc.p(winSize.width/2-120, winSize.height/2-200)).easing(cc.easeBounceOut());
 		this.board.runAction(actionTo);
 //		this.menu.runAction(actionTo1);
 
 		this.labelCoin = new cc.LabelTTF("0", "Helvetica", 35);
 		this.labelCoin.setColor(cc.color(67, 144, 67));
 		this.labelCoin.setPosition(cc.p(winSize.width + 100, winSize.height/2+25));
-		this.labelCoin.runAction(cc.MoveTo.create(0.7, cc.p(winSize.width / 2 + 90, winSize.height/2+25)).easing(cc.easeBounceOut()));
+		this.labelCoin.runAction(cc.moveTo(0.7, cc.p(winSize.width / 2 + 90, winSize.height/2+25)).easing(cc.easeBounceOut()));
 		this.addChild(this.labelCoin);
 
 		this.labelKill = new cc.LabelTTF("0", "Helvetica", 35);
 		this.labelKill.setColor(cc.color(67, 144, 67));
 		this.labelKill.setPosition(cc.p(winSize.width + 100, winSize.height/2+85));
-		this.labelKill.runAction(cc.MoveTo.create(0.7, cc.p(winSize.width / 2 + 90, winSize.height/2+85)).easing(cc.easeBounceOut()));
+		this.labelKill.runAction(cc.moveTo(0.7, cc.p(winSize.width / 2 + 90, winSize.height/2+85)).easing(cc.easeBounceOut()));
 		this.addChild(this.labelKill);
 
 		this.labelDistance = new cc.LabelTTF("0", "Helvetica", 35);
 		this.labelDistance.setColor(cc.color(67, 144, 67));
 		this.labelDistance.setPosition(cc.p(winSize.width + 100, winSize.height/2-35));
-		this.labelDistance.runAction(cc.MoveTo.create(0.7, cc.p(winSize.width / 2 + 90, winSize.height/2-35)).easing(cc.easeBounceOut()));
+		this.labelDistance.runAction(cc.moveTo(0.7, cc.p(winSize.width / 2 + 90, winSize.height/2-35)).easing(cc.easeBounceOut()));
 		this.addChild(this.labelDistance);
 
 		this.score = statistics.kill * 30 + statistics.coins*10 + statistics.meter;
@@ -64,7 +64,7 @@ var StatisticsLayer = cc.LayerColor.extend(/**@lends StatisticsLayer# */{
 		this.labelScore = new cc.LabelTTF("0", "Helvetica", 35);
 		this.labelScore.setColor(cc.color(158, 98, 22));
 		this.labelScore.setPosition(cc.p(winSize.width + 100, winSize.height/2-95));
-		this.labelScore.runAction(cc.MoveTo.create(0.7, cc.p(winSize.width / 2 + 90, winSize.height/2-95)).easing(cc.easeBounceOut()));
+		this.labelScore.runAction(cc.moveTo(0.7, cc.p(winSize.width / 2 + 90, winSize.height/2-95)).easing(cc.easeBounceOut()));
 		this.addChild(this.labelScore);
 
 		this.restartBtn = new cc.Menu(new cc.MenuItemSprite(
@@ -79,7 +79,7 @@ var StatisticsLayer = cc.LayerColor.extend(/**@lends StatisticsLayer# */{
 			y: winSize.height/2-165
 		});
 		this.restartBtn.setScale(0.8);
-		this.restartBtn.runAction(cc.MoveTo.create(0.7, cc.p(winSize.width/2, winSize.height/2-165)).easing(cc.easeBounceOut()));
+		this.restartBtn.runAction(cc.moveTo(0.7, cc.p(winSize.width/2, winSize.height/2-165)).easing(cc.easeBounceOut()));
 		this.addChild(this.restartBtn, 1);
 
 		this.storeBtn = new cc.Menu(new cc.MenuItemSprite(
@@ -94,7 +94,7 @@ var StatisticsLayer = cc.LayerColor.extend(/**@lends StatisticsLayer# */{
 			y: winSize.height/2-165
 		});
 		this.storeBtn.setScale(0.8);
-		this.storeBtn.runAction(cc.MoveTo.create(0.7, cc.p(winSize.width/2+70, winSize.height/2-165)).easing(cc.easeBounceOut()));
+		this.storeBtn.runAction(cc.moveTo(0.7, cc.p(winSize.width/2+70, winSize.height/2-165)).easing(cc.easeBounceOut()));
 		this.addChild(this.storeBtn, 1);
 
 		this.menuBtn = new cc.Menu(new cc.MenuItemSprite(
@@ -109,7 +109,7 @@ var StatisticsLayer = cc.LayerColor.extend(/**@lends StatisticsLayer# */{
 			y: winSize.height/2-165
 		});
 		this.menuBtn.setScale(0.8);
-		this.menuBtn.runAction(cc.MoveTo.create(0.7, cc.p(winSize.width/2-70, winSize.height/2-165)).easing(cc.easeBounceOut()));
+		this.menuBtn.runAction(cc.moveTo(0.7, cc.p(winSize.width/2-70, winSize.height/2-165)).easing(cc.easeBounceOut()));
 		this.addChild(this.menuBtn, 1);
 
 		//save data to localstorage
@@ -168,63 +168,63 @@ var StatisticsLayer = cc.LayerColor.extend(/**@lends StatisticsLayer# */{
 	 */
 	onRestart: function (sender) {
 		var winSize = cc.director.getWinSize();
-//		var actionTo1 = cc.MoveTo.create(0.7, cc.p(winSize.width/2-120, winSize.height/2-200)).easing(cc.easeBounceOut());
-		var action = cc.Sequence.create(
-				cc.MoveTo.create(0.7, cc.p(-300, winSize.height/2)).easing(cc.easeElasticInOut(0.45)));
+//		var actionTo1 = cc.moveTo(0.7, cc.p(winSize.width/2-120, winSize.height/2-200)).easing(cc.easeBounceOut());
+		var action = cc.sequence(
+				cc.moveTo(0.7, cc.p(-300, winSize.height/2)).easing(cc.easeElasticInOut(0.45)));
 		this.board.runAction(action);
-		this.restartBtn.runAction(cc.Sequence.create(
-				cc.MoveTo.create(0.7, cc.p(-300, winSize.height/2-165)).easing(cc.easeElasticInOut(0.45)),
-				cc.CallFunc.create(function(){
+		this.restartBtn.runAction(cc.sequence(
+				cc.moveTo(0.7, cc.p(-300, winSize.height/2-165)).easing(cc.easeElasticInOut(0.45)),
+				cc.callFunc(function(){
 					cc.director.runScene(new this.playSceneClass());
 				}.bind(this))));
-		this.storeBtn.runAction(cc.Sequence.create(
-				cc.MoveTo.create(0.7, cc.p(-300, winSize.height/2-165)).easing(cc.easeElasticInOut(0.45))));
+		this.storeBtn.runAction(cc.sequence(
+				cc.moveTo(0.7, cc.p(-300, winSize.height/2-165)).easing(cc.easeElasticInOut(0.45))));
 
-		this.menuBtn.runAction(cc.Sequence.create(
-				cc.MoveTo.create(0.7, cc.p(-300, winSize.height/2-165)).easing(cc.easeElasticInOut(0.45))));
+		this.menuBtn.runAction(cc.sequence(
+				cc.moveTo(0.7, cc.p(-300, winSize.height/2-165)).easing(cc.easeElasticInOut(0.45))));
 		//play button effect
 		cc.audioEngine.playEffect(res.sound.button);
 
 		//label out
-		this.labelCoin.runAction(cc.Sequence.create(
-				cc.MoveTo.create(0.7, cc.p(-300, winSize.height/2+25)).easing(cc.easeElasticInOut(0.45))));
-		this.labelKill.runAction(cc.Sequence.create(
-				cc.MoveTo.create(0.7, cc.p(-300, winSize.height/2+85)).easing(cc.easeElasticInOut(0.45))));
-		this.labelDistance.runAction(cc.Sequence.create(
-				cc.MoveTo.create(0.7, cc.p(-300, winSize.height/2-35)).easing(cc.easeElasticInOut(0.45))));
-		this.labelScore.runAction(cc.Sequence.create(
-				cc.MoveTo.create(0.7, cc.p(-300, winSize.height/2-95)).easing(cc.easeElasticInOut(0.45))));
+		this.labelCoin.runAction(cc.sequence(
+				cc.moveTo(0.7, cc.p(-300, winSize.height/2+25)).easing(cc.easeElasticInOut(0.45))));
+		this.labelKill.runAction(cc.sequence(
+				cc.moveTo(0.7, cc.p(-300, winSize.height/2+85)).easing(cc.easeElasticInOut(0.45))));
+		this.labelDistance.runAction(cc.sequence(
+				cc.moveTo(0.7, cc.p(-300, winSize.height/2-35)).easing(cc.easeElasticInOut(0.45))));
+		this.labelScore.runAction(cc.sequence(
+				cc.moveTo(0.7, cc.p(-300, winSize.height/2-95)).easing(cc.easeElasticInOut(0.45))));
 	},
 
 	onMenu: function() {
 		var winSize = cc.director.getWinSize();
-//		var actionTo1 = cc.MoveTo.create(0.7, cc.p(winSize.width/2-120, winSize.height/2-200)).easing(cc.easeBounceOut());
-		var action = cc.Sequence.create(
-				cc.MoveTo.create(0.7, cc.p(-300, winSize.height/2)).easing(cc.easeElasticInOut(0.45)));
+//		var actionTo1 = cc.moveTo(0.7, cc.p(winSize.width/2-120, winSize.height/2-200)).easing(cc.easeBounceOut());
+		var action = cc.sequence(
+				cc.moveTo(0.7, cc.p(-300, winSize.height/2)).easing(cc.easeElasticInOut(0.45)));
 		this.board.runAction(action);
-		this.menuBtn.runAction(cc.Sequence.create(
-				cc.MoveTo.create(0.7, cc.p(-300, winSize.height/2-165)).easing(cc.easeElasticInOut(0.45)),
-				cc.CallFunc.create(function(){
+		this.menuBtn.runAction(cc.sequence(
+				cc.moveTo(0.7, cc.p(-300, winSize.height/2-165)).easing(cc.easeElasticInOut(0.45)),
+				cc.callFunc(function(){
 					cc.director.replaceScene(new WelcomeScene());
 				}.bind(this))));
 		//play button effect
 		cc.audioEngine.playEffect(res.sound.button);
 
-		this.restartBtn.runAction(cc.Sequence.create(
-				cc.MoveTo.create(0.7, cc.p(-300, winSize.height/2-165)).easing(cc.easeElasticInOut(0.45))));
+		this.restartBtn.runAction(cc.sequence(
+				cc.moveTo(0.7, cc.p(-300, winSize.height/2-165)).easing(cc.easeElasticInOut(0.45))));
 
-		this.storeBtn.runAction(cc.Sequence.create(
-				cc.MoveTo.create(0.7, cc.p(-300, winSize.height/2-165)).easing(cc.easeElasticInOut(0.45))));
+		this.storeBtn.runAction(cc.sequence(
+				cc.moveTo(0.7, cc.p(-300, winSize.height/2-165)).easing(cc.easeElasticInOut(0.45))));
 
 		//label out
-		this.labelCoin.runAction(cc.Sequence.create(
-				cc.MoveTo.create(0.7, cc.p(-300, winSize.height/2+25)).easing(cc.easeElasticInOut(0.45))));
-		this.labelKill.runAction(cc.Sequence.create(
-				cc.MoveTo.create(0.7, cc.p(-300, winSize.height/2+85)).easing(cc.easeElasticInOut(0.45))));
-		this.labelDistance.runAction(cc.Sequence.create(
-				cc.MoveTo.create(0.7, cc.p(-300, winSize.height/2-35)).easing(cc.easeElasticInOut(0.45))));
-		this.labelScore.runAction(cc.Sequence.create(
-				cc.MoveTo.create(0.7, cc.p(-300, winSize.height/2-95)).easing(cc.easeElasticInOut(0.45))));
+		this.labelCoin.runAction(cc.sequence(
+				cc.moveTo(0.7, cc.p(-300, winSize.height/2+25)).easing(cc.easeElasticInOut(0.45))));
+		this.labelKill.runAction(cc.sequence(
+				cc.moveTo(0.7, cc.p(-300, winSize.height/2+85)).easing(cc.easeElasticInOut(0.45))));
+		this.labelDistance.runAction(cc.sequence(
+				cc.moveTo(0.7, cc.p(-300, winSize.height/2-35)).easing(cc.easeElasticInOut(0.45))));
+		this.labelScore.runAction(cc.sequence(
+				cc.moveTo(0.7, cc.p(-300, winSize.height/2-95)).easing(cc.easeElasticInOut(0.45))));
 	},
 
 	onStore: function() {
@@ -254,7 +254,7 @@ var StatisticsLayer = cc.LayerColor.extend(/**@lends StatisticsLayer# */{
 		this.sboard.setPosition(cc.p(winsize.width/2+300, winsize.height/2));
 		this.sboard.setScale(0.57);
 		this.addChild(this.sboard, 5);
-		var actionTo = cc.MoveTo.create(1, cc.p(winsize.width/2, winsize.height/2)).easing(cc.easeElasticOut());
+		var actionTo = cc.moveTo(1, cc.p(winsize.width/2, winsize.height/2)).easing(cc.easeElasticOut());
 		this.sboard.runAction(actionTo);
 
 		this.backBtn = new cc.Menu(new cc.MenuItemSprite(
@@ -269,7 +269,7 @@ var StatisticsLayer = cc.LayerColor.extend(/**@lends StatisticsLayer# */{
 			y: winsize.height/2-190
 		});
 		this.backBtn.setScale(0.6);
-		this.backBtn.runAction(cc.MoveTo.create(1, cc.p(winsize.width/2-100, winsize.height/2-210)).easing(cc.easeElasticOut()));
+		this.backBtn.runAction(cc.moveTo(1, cc.p(winsize.width/2-100, winsize.height/2-210)).easing(cc.easeElasticOut()));
 		this.addChild(this.backBtn, 6);
 
 		//show coins nums
@@ -279,7 +279,7 @@ var StatisticsLayer = cc.LayerColor.extend(/**@lends StatisticsLayer# */{
 		this.labelCoins.setScale(0.3);
 		this.addChild(this.labelCoins, 10);
 		//this.labelCoins.retain();
-		this.labelCoins.runAction(cc.MoveTo.create(1, cc.p(winsize.width/2+50, winsize.height/2+128)).easing(cc.easeElasticOut()));
+		this.labelCoins.runAction(cc.moveTo(1, cc.p(winsize.width/2+50, winsize.height/2+128)).easing(cc.easeElasticOut()));
 
 		this.buyMagnetBtn = new cc.Menu(new cc.MenuItemSprite(
 				new cc.Sprite(res.ui.buy30),
@@ -298,10 +298,10 @@ var StatisticsLayer = cc.LayerColor.extend(/**@lends StatisticsLayer# */{
 		this.buyMagnetBtn.setPosition(cc.p(winsize.width+80, winsize.height/2+70));
 		this.buyMagnetBtn.attr({
 			anchorX: 0,
-			anchorY: 0,
+			anchorY: 0
 		});
 		this.buyMagnetBtn.setScale(0.6);
-		this.buyMagnetBtn.runAction(cc.MoveTo.create(1, cc.p(winsize.width/2+80, winsize.height/2+70)).easing(cc.easeElasticOut()));
+		this.buyMagnetBtn.runAction(cc.moveTo(1, cc.p(winsize.width/2+80, winsize.height/2+70)).easing(cc.easeElasticOut()));
 		this.addChild(this.buyMagnetBtn, 6);
 
 		this.buyShoesBtn = new cc.Menu(new cc.MenuItemSprite(
@@ -321,10 +321,10 @@ var StatisticsLayer = cc.LayerColor.extend(/**@lends StatisticsLayer# */{
 		this.buyShoesBtn.setPosition(cc.p(winsize.width+80, winsize.height/2-10));
 		this.buyShoesBtn.attr({
 			anchorX: 0,
-			anchorY: 0,
+			anchorY: 0
 		});
 		this.buyShoesBtn.setScale(0.6);
-		this.buyShoesBtn.runAction(cc.MoveTo.create(1, cc.p(winsize.width/2+80, winsize.height/2-10)).easing(cc.easeElasticOut()));
+		this.buyShoesBtn.runAction(cc.moveTo(1, cc.p(winsize.width/2+80, winsize.height/2-10)).easing(cc.easeElasticOut()));
 		this.addChild(this.buyShoesBtn, 6);
 
 		this.buyRedshoesBtn = new cc.Menu(new cc.MenuItemSprite(
@@ -344,10 +344,10 @@ var StatisticsLayer = cc.LayerColor.extend(/**@lends StatisticsLayer# */{
 		this.buyRedshoesBtn.setPosition(cc.p(winsize.width+80, winsize.height/2-90));
 		this.buyRedshoesBtn.attr({
 			anchorX: 0,
-			anchorY: 0,
+			anchorY: 0
 		});
 		this.buyRedshoesBtn.setScale(0.6);
-		this.buyRedshoesBtn.runAction(cc.MoveTo.create(1, cc.p(winsize.width/2+80, winsize.height/2-90)).easing(cc.easeElasticOut()));
+		this.buyRedshoesBtn.runAction(cc.moveTo(1, cc.p(winsize.width/2+80, winsize.height/2-90)).easing(cc.easeElasticOut()));
 		this.addChild(this.buyRedshoesBtn, 6);
 
 		/**
@@ -360,7 +360,7 @@ var StatisticsLayer = cc.LayerColor.extend(/**@lends StatisticsLayer# */{
 		this.labelMagnet.setPosition(cc.p(winsize.width+100, winsize.height/6-5));
 		this.labelMagnet.setScale(0.3);
 		this.addChild(this.labelMagnet, 10);
-		this.labelMagnet.runAction(cc.MoveTo.create(1, cc.p(winsize.width/2-70, winsize.height/6-5)).easing(cc.easeElasticOut()));
+		this.labelMagnet.runAction(cc.moveTo(1, cc.p(winsize.width/2-70, winsize.height/6-5)).easing(cc.easeElasticOut()));
 
 		//show shoes
 		this.labelShoes = new cc.LabelTTF(this.magnetNum, "Helvetica", 60);
@@ -368,7 +368,7 @@ var StatisticsLayer = cc.LayerColor.extend(/**@lends StatisticsLayer# */{
 		this.labelShoes.setPosition(cc.p(winsize.width+100, winsize.height/6-5));
 		this.labelShoes.setScale(0.3);
 		this.addChild(this.labelShoes, 10);
-		this.labelShoes.runAction(cc.MoveTo.create(1, cc.p(winsize.width/2+20, winsize.height/6-5)).easing(cc.easeElasticOut()));
+		this.labelShoes.runAction(cc.moveTo(1, cc.p(winsize.width/2+20, winsize.height/6-5)).easing(cc.easeElasticOut()));
 
 		//show redshoes
 		this.labelRedshoes = new cc.LabelTTF(this.magnetNum, "Helvetica", 60);
@@ -376,7 +376,7 @@ var StatisticsLayer = cc.LayerColor.extend(/**@lends StatisticsLayer# */{
 		this.labelRedshoes.setPosition(cc.p(winsize.width+100, winsize.height/6-5));
 		this.labelRedshoes.setScale(0.3);
 		this.addChild(this.labelRedshoes, 10);
-		this.labelRedshoes.runAction(cc.MoveTo.create(1, cc.p(winsize.width/2+100, winsize.height/6-5)).easing(cc.easeElasticOut()));
+		this.labelRedshoes.runAction(cc.moveTo(1, cc.p(winsize.width/2+100, winsize.height/6-5)).easing(cc.easeElasticOut()));
 	},
 	
 	onUpload: function () {
@@ -400,34 +400,34 @@ var StatisticsLayer = cc.LayerColor.extend(/**@lends StatisticsLayer# */{
 
 	backToMenu: function() {
 		var winsize = cc.director.getWinSize();
-		this.backBtn.runAction(cc.Sequence.create(cc.MoveTo.create(1, cc.p(-250, winsize.height/2-190)).easing(cc.easeElasticInOut(0.45)),
-				cc.CallFunc(function(){
+		this.backBtn.runAction(cc.sequence(cc.moveTo(1, cc.p(-250, winsize.height/2-190)).easing(cc.easeElasticInOut(0.45)),
+				cc.callFunc(function(){
 					this.sboard.removeFromParent();
 					this.backBtn.removeFromParent();
 					this.draw.removeFromParent();
 				}.bind(this))));
-		this.sboard.runAction(cc.MoveTo.create(1, cc.p(-250, winsize.height/2)).easing(cc.easeElasticInOut(0.45)));
+		this.sboard.runAction(cc.moveTo(1, cc.p(-250, winsize.height/2)).easing(cc.easeElasticInOut(0.45)));
 		if(this.effect)
-			this.effect.runAction(cc.MoveTo.create(1, cc.p(-250, winsize.height/2+10)).easing(cc.easeElasticInOut(0.45)));
+			this.effect.runAction(cc.moveTo(1, cc.p(-250, winsize.height/2+10)).easing(cc.easeElasticInOut(0.45)));
 		if(this.audio)
-			this.audio.runAction(cc.MoveTo.create(1, cc.p(-250, winsize.height/2-65)).easing(cc.easeElasticInOut(0.45)));
+			this.audio.runAction(cc.moveTo(1, cc.p(-250, winsize.height/2-65)).easing(cc.easeElasticInOut(0.45)));
 		if(this.diff)
-			this.diff.runAction(cc.MoveTo.create(1, cc.p(-250, winsize.height/2-140)).easing(cc.easeElasticInOut(0.45)));
+			this.diff.runAction(cc.moveTo(1, cc.p(-250, winsize.height/2-140)).easing(cc.easeElasticInOut(0.45)));
 
 		if(this.buyMagnetBtn)
-			this.buyMagnetBtn.runAction(cc.MoveTo.create(1, cc.p(-250, winsize.height/2+70)).easing(cc.easeElasticInOut(0.45)));
+			this.buyMagnetBtn.runAction(cc.moveTo(1, cc.p(-250, winsize.height/2+70)).easing(cc.easeElasticInOut(0.45)));
 		if(this.buyShoesBtn)
-			this.buyShoesBtn.runAction(cc.MoveTo.create(1, cc.p(-250, winsize.height/2-10)).easing(cc.easeElasticInOut(0.45)));
+			this.buyShoesBtn.runAction(cc.moveTo(1, cc.p(-250, winsize.height/2-10)).easing(cc.easeElasticInOut(0.45)));
 		if(this.buyRedshoesBtn)
-			this.buyRedshoesBtn.runAction(cc.MoveTo.create(1, cc.p(-250, winsize.height/2-90)).easing(cc.easeElasticInOut(0.45)));
+			this.buyRedshoesBtn.runAction(cc.moveTo(1, cc.p(-250, winsize.height/2-90)).easing(cc.easeElasticInOut(0.45)));
 		if(this.labelCoins)
-			this.labelCoins.runAction(cc.MoveTo.create(1, cc.p(-250, winsize.height/2+128)).easing(cc.easeElasticInOut(0.45)));
+			this.labelCoins.runAction(cc.moveTo(1, cc.p(-250, winsize.height/2+128)).easing(cc.easeElasticInOut(0.45)));
 		if(this.labelMagnet)
-			this.labelMagnet.runAction(cc.MoveTo.create(1, cc.p(-250, winsize.height/6-5)).easing(cc.easeElasticInOut(0.45)));
+			this.labelMagnet.runAction(cc.moveTo(1, cc.p(-250, winsize.height/6-5)).easing(cc.easeElasticInOut(0.45)));
 		if(this.labelShoes)
-			this.labelShoes.runAction(cc.MoveTo.create(1, cc.p(-250, winsize.height/6-5)).easing(cc.easeElasticInOut(0.45)));
+			this.labelShoes.runAction(cc.moveTo(1, cc.p(-250, winsize.height/6-5)).easing(cc.easeElasticInOut(0.45)));
 		if(this.labelRedshoes){
-			this.labelRedshoes.runAction(cc.MoveTo.create(1, cc.p(-250, winsize.height/6-5)).easing(cc.easeElasticInOut(0.45)));
+			this.labelRedshoes.runAction(cc.moveTo(1, cc.p(-250, winsize.height/6-5)).easing(cc.easeElasticInOut(0.45)));
 			//change music
 			cc.audioEngine.stopMusic();
 			cc.audioEngine.playMusic(res.sound.bg_mp3);
